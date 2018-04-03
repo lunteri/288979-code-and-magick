@@ -35,9 +35,9 @@ var getMaxElement = function (arr) {
     return maxElement;
 };
 
-var renderHistogram = function (ctx, players, times, x, y, i, height, maxTime) {
+var renderHistogram = function (ctx, player, times, x, y, i, height, maxTime) {
 
-    if (players === 'Вы') {
+    if (player === 'Вы') {
         ctx.fillStyle = 'rgb(255, 0, 0)';
     } else {
         var alfa = Math.random();
@@ -46,23 +46,23 @@ var renderHistogram = function (ctx, players, times, x, y, i, height, maxTime) {
 
     ctx.fillRect(x, y, BAR_WIDTH, height);
     ctx.fillStyle = '#000';
-    ctx.fillText(players, x, CLOUD_Y + FONT_GAP);
+    ctx.fillText(player, x, CLOUD_Y + FONT_GAP);
     ctx.fillStyle = '#000';
     ctx.fillText(Math.ceil(times), x, CLOUD_Y + barHeight - height + GAP + CLOUD_GAP);
 }
 
-window.renderStatistics = function (ctx, players, times) {
+window.renderStatistics = function (ctx, player, times) {
 
     renderCloud(ctx, CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_GAP, 'rgba(0, 0, 0, 0.7');
     renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
     writeText(ctx);
 
     var maxTime = getMaxElement(times);
-    for (var i = 0; i < players.length; i++) {
+    for (var i = 0; i < player.length; i++) {
 
         var x = CLOUD_X + GAP + (GAP + BAR_WIDTH) * i;
         var y = CLOUD_Y + GAP_BAR + (barHeight - barHeight * times[i] / maxTime);
         var height = barHeight * times[i] / maxTime
-        renderHistogram(ctx, players[i], times[i], x, y, i, height);
+        renderHistogram(ctx, player[i], times[i], x, y, i, height);
     }
 };
