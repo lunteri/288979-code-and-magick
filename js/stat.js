@@ -35,15 +35,9 @@ var getMaxElement = function (arr) {
     return maxElement;
 };
 
-var renderHistogram = function (ctx, player, times, x, y, i, height, maxTime) {
+var renderHistogram = function (ctx, player, times, x, y, height) {
 
-    if (player === 'Вы') {
-        ctx.fillStyle = 'rgb(255, 0, 0)';
-    } else {
-        var alfa = Math.random();
-        ctx.fillStyle = 'rgba(0, 0, 255,' + alfa + ')';
-    }
-
+    ctx.fillStyle = player === 'Вы' ? 'rgb(255, 0, 0)' : 'rgba(0, 0, 255,' + Math.random() + ')'
     ctx.fillRect(x, y, BAR_WIDTH, height);
     ctx.fillStyle = '#000';
     ctx.fillText(player, x, CLOUD_Y + FONT_GAP);
@@ -63,6 +57,6 @@ window.renderStatistics = function (ctx, player, times) {
         var x = CLOUD_X + GAP + (GAP + BAR_WIDTH) * i;
         var y = CLOUD_Y + GAP_BAR + (barHeight - barHeight * times[i] / maxTime);
         var height = barHeight * times[i] / maxTime
-        renderHistogram(ctx, player[i], times[i], x, y, i, height);
+        renderHistogram(ctx, player[i], times[i], x, y, height);
     }
 };
