@@ -1,6 +1,6 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url]
 
-* Студент: [Екатерина Субботина](https://up.htmlacademy.ru/javascript/13/user/288979).
+* Студент: [Северская Лун](https://up.htmlacademy.ru/javascript/13/user/288979).
 * Наставник: `Неизвестно`.
 
 ---
